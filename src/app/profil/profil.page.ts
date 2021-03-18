@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
@@ -14,6 +15,7 @@ import { RessourceService } from '../services/ressource.service';
 })
 export class ProfilPage implements OnInit {
   user;
+  heart:any;
   ressources : Observable<any>;
   constructor(private auth : AuthService, private modalCtrl : ModalController, private ressourceService : RessourceService, private db : AngularFirestore) { }
 
@@ -44,22 +46,4 @@ export class ProfilPage implements OnInit {
     this.user = this.db.doc(`users/${ide}`);
   }
 
-}
-
-export class YourClass{
-
-  LikeValue: number;
-  DislikeValue: number;
-
-    constructor(){
-    this.LikeValue = 0;
-    this.DislikeValue = 0;
-    }
-
-    handleLike(){
-     this.LikeValue++;
-    }
-    handleDislike(){
-     this.DislikeValue++;
-    }
-  }
+};

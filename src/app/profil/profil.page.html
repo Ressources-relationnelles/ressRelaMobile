@@ -23,17 +23,32 @@
     <ion-icon name="checkmark-circle" color="success" *ngIf="ressource.status == 1" slot="start" ></ion-icon>
 
     <ion-label>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-img [src]="ressource.imgUrl"></ion-img>
+        </ion-thumbnail>
+      </ion-item>
       <h2>{{ ressource.title }}</h2>
       <p>{{ ressource.desc }}</p>
+      <p>{{ ressource.categorie }}</p>
+      <p> </p>
+      <a ng-href=""
+      attr.data-target="{{ressource.lien}}"
+      onclick="window.open('ressource.lien','_system','location=yes')">{{ressource.lien}}</a>
+    <ion-item>
+      <ion-badge color="danger">{{ ressource.nblike }}</ion-badge>
+      <ion-icon  onclick="removelike(heart)" name="heart"></ion-icon>
+      <ion-icon  onclick="addlike(heart)" color="danger" name="heart"></ion-icon>
+    </ion-item>
     </ion-label>
     <ion-note>
       {{ ressource.created_at?.seconds*1000 | date: 'MMM d' }}
     </ion-note>
   </ion-item>
 </ion-list>
-
-
 </ion-content>
+
+
 <!-- Boutton ajouter ressources -->
 <ion-fab  class="ion-margin-bottom ion-margin-end ion-padding-bottom" vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button color="success" (click)="openRessourceModal()">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HammerGestureConfig } from '@angular/platform-browser';
 import { LoadingController, ModalController, NavParams } from '@ionic/angular';
 import { RessourceService } from 'src/app/services/ressource.service';
 
@@ -26,7 +27,11 @@ export class RessourcePage implements OnInit {
     this.ressourceForm = this.fb.group({
       title: ['', Validators.required],
       desc: ['', Validators.required],
-      status: 0
+      status: 0,
+      categorie: [''],
+      lien: ['', Validators.required],
+      imgURL: ['', Validators.required],
+      nblike: 0
     });
 
   this.id = this.navParam.get('id');
@@ -37,11 +42,19 @@ export class RessourcePage implements OnInit {
       this.ressourceForm.patchValue({
         title: ressource['title'],
         desc: ressource['desc'],
-        status: ressource['status']
+        status: ressource['status'],
+        categorie: ressource['categorie'],
+        lien: ressource['lien'],
+        imgURL: ressource['imgURL'],
+        nbike: ressource['nblike']
       });
 
       this.ressourceForm.controls['title'].disable();
       this.ressourceForm.controls['desc'].disable();
+      this.ressourceForm.controls['categorie'].disable();
+      this.ressourceForm.controls['lien'].disable();
+      this.ressourceForm.controls['imgURL'].disable();
+      this.ressourceForm.controls['nblike'].disable();
       // this.ressourceForm.controls['status'].disable();
 
       this.ressourceService.getUser(ressource['creator']).subscribe(user => {
@@ -76,4 +89,13 @@ export class RessourcePage implements OnInit {
     })
   }
 
+  addlike(heart){
+    heart.nblike++;
+    heart.liked=true;
+  }
+  removelike(heart){
+    heart.nblike--;
+    heart.liked=false;
+  }
 }
+

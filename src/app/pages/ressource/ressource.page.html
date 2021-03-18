@@ -34,6 +34,32 @@
           <ion-label position="floating">Contenu <ion-text color="danger">*</ion-text></ion-label>
           <ion-textarea required formControlName="desc" type="text"></ion-textarea>
         </ion-item>
+        <ion-item>
+          <ion-label position="floating">Lien <ion-text color="danger">*</ion-text></ion-label>
+          <ion-textarea required formControlName="lien" type="text"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Url de l'image: <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="imgURL" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Categorie <ion-text color="danger">*</ion-text></ion-label>
+          <ion-select>
+            <ion-select-option formControlName="categorie" type="text">Communication</ion-select-option>
+            <ion-select-option>Culture</ion-select-option>
+            <ion-select-option>Développement personnel</ion-select-option>
+            <ion-select-option>Intelligence émotionelle</ion-select-option>
+            <ion-select-option>Loisirs</ion-select-option>
+            <ion-select-option>Monde professionnel</ion-select-option>
+            <ion-select-option>Parentalité</ion-select-option>
+            <ion-select-option>Qualité de vie</ion-select-option>
+            <ion-select-option>Recherche de sens</ion-select-option>
+            <ion-select-option>Santé physique</ion-select-option>
+            <ion-select-option>Santé psychique</ion-select-option>
+            <ion-select-option>Spiritualité</ion-select-option>
+            <ion-select-option>Vie affective</ion-select-option>
+          </ion-select>
+        </ion-item>
 
         <ion-item>
           <ion-label>Status</ion-label>
