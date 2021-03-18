@@ -1,34 +1,52 @@
 
-
 <ion-content>
-    <!-- Test si l'utilisateur non connecté => affiche formulaire ou non -->
-    <!-- <div *ngIf="!connected"> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-justify-content-center" size-lg="6" size-md="6" size-sm="12" size="12">
         <div class="header">
           <h1 style="color:white;">(Re)Sources relationnelles</h1>
-          <h2 style="color:yellow;">Créer, partager, enrichir vos relations</h2>
-          <ion-img text-center src="../../assets/icon/77191645.png" routerLink="/home"></ion-img>
+          <h2 style="color:yellow;">Créer, partager, enrichir<br/>vos relations</h2>
         </div>
 
+        <div class="store">
+          <p>Disponible sur</p>
+          <div class="wrapper-store">
+            <ion-img class='icon-store' src="../../assets/googleplay.png"></ion-img>
+            <ion-img class='icon-store' src="../../assets/appstore.png"></ion-img>
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col class="form-login">
         <div class="padding">
+          <ion-img class="center" src="../../assets/icon/77191645.png" routerLink="/home"></ion-img>
           <form (ngSubmit)="login()" [formGroup]="loginForm">
+                  <ion-item class='input'>
+                      <!-- <ion-label color="light">Email</ion-label> -->
+                      <ion-input color="light" type='email' formControlName="email" placeholder="Adresse mail" type="email"></ion-input>
+                  </ion-item>
 
-            <ion-item>
-                <ion-label color="light">Email</ion-label>
-                <ion-input color="light" type='email' formControlName="email" placeholder="Adresse mail" type="email"></ion-input>
-            </ion-item>
+                <ion-item class="input">
+                  <!-- <ion-label color="light">Mot de passe</ion-label> -->
+                  <ion-input color="light" type ='password' formControlName="password" placeholder="Mot de passe" type="password"></ion-input>
+                </ion-item>
 
-            <ion-item>
-                <ion-label color="light">Mot de passe</ion-label>
-                <ion-input color="light" type ='password' formControlName="password" placeholder="Mot de passe" type="password"></ion-input>
-            </ion-item>
+                <ion-item lines="none">
+                  <ion-button (click)="openReset()"  fill="clear" slot="end">Mot de passe oublié</ion-button>
+                </ion-item>
 
-            <ion-item lines="none">
-                <ion-button (click)="openReset()" color="light" fill="clear" slot="end">Mot de passe oublié</ion-button>
-            </ion-item>
+                <ion-button [disabled]="!loginForm.valid" color="success" shape="round" type="submit" (click)="login()" expand="block">Connexion</ion-button>
+                <ion-button shape="round" routerLink='/register' color="tertiary" expand="block">Inscription</ion-button>
+              </form>
+            </div>
+      </ion-col>
+    </ion-row>
+    <!-- Test si l'utilisateur non connecté => affiche formulaire ou non -->
+    <!-- <div *ngIf="!connected"> -->
 
-            <ion-button [disabled]="!loginForm.valid" color="success" shape="round" type="submit" (click)="login()" expand="block">Connexion</ion-button>
-            <ion-button shape="round" routerLink='/register' color="tertiary" expand="block">Inscription</ion-button>
-          </form>
-        </div>
-    <!-- </div> -->
+            <!-- </div> -->
+    </ion-grid>
 </ion-content>
+
+
+
