@@ -47,6 +47,19 @@ export class RessourceService {
       takeUntil(this.ngUnsubscribe)
     )
   }
+  /**
+   * Récupérer les ressources validées et publiées
+   */
+  getRessourcesActive()  {
+    return this.db.collection('ressources', ref => ref.where('status', '==', "1")).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id,...(data as {}) };
+      })),
+      takeUntil(this.ngUnsubscribe)
+    )
+  }
 
   getAdminRessources() {
     return this.db.collection('ressources').snapshotChanges().pipe(
