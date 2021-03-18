@@ -5,13 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AdminUsersPage } from './admin-users.page';
+import { AdminUsersPageRoutingModule } from './admin-users-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminUsersPageModule
+    AdminUsersPageRoutingModule
   ],
   declarations: [AdminUsersPage]
 })

@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment';
 import { RessourcePageModule } from './pages/ressource/ressource.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // Possibilité de mettre la config firebase dans environments/environment.ts
 // export const firebaseConfig = {
@@ -37,7 +38,8 @@ import { RessourcePageModule } from './pages/ressource/ressource.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    RessourcePageModule
+    RessourcePageModule,
+    NoopAnimationsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
