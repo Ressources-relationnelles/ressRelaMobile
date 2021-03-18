@@ -12,11 +12,22 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(public modalController:ModalController, private auth : AuthService) {}
+
+  user;
+
+  constructor(public modalController:ModalController, private auth : AuthService, private afAuth :AngularFireAuth) {}
 
   showSubmenu: boolean = false;
   showSubmenu2: boolean = false;
 
+  ngOnInit() {
+    this.user = this.auth.user;
+    console.log("user.role", this.user);
+    this.afAuth.authState.subscribe(auth => {
+      console.log('Connecté: ' + auth);
+    });
+
+  }
 
   menuItemHandler(): void {
     this.showSubmenu = !this.showSubmenu;

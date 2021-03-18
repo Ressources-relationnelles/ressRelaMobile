@@ -3,42 +3,85 @@
   <ion-buttons slot="start">
     <ion-back-button defaultHref="/co"></ion-back-button>
   </ion-buttons>
-  <ion-title>Créer un compte</ion-title>
+  <ion-title>Connexion</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-    <ion-item lines="none">
-      <!-- <ion-label position="floating">Email</ion-label> -->
-      <ion-label>Email</ion-label>
-      <ion-input type='email' placeholder="john@doe.com" formControlName="email" ></ion-input>
-    </ion-item>
+  <ion-grid>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-    <ion-item>
-      <ion-label>Nom</ion-label>
-      <ion-input type='email' placeholder="Doe" formControlName="nom" ></ion-input>
-    </ion-item>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-lg="5" size-md="6" size-sm="12" size="12">
+        <h1 class="ion-text-center" style="color:white;">Inscription</h1>
+        <ion-item class="input" lines="none">
+          <!-- <ion-label position="floating">Email</ion-label> -->
+          <ion-label>Email</ion-label>
+          <ion-input type='email' placeholder="john@doe.com" formControlName="email" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Prenom</ion-label>
-      <ion-input type='email' placeholder="John" formControlName="prenom" ></ion-input>
-    </ion-item>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-lg="5" size-md="6" size-sm="12" size="12">
+        <ion-item class="input">
+          <ion-label>Nom</ion-label>
+          <ion-input type='email' placeholder="Doe" formControlName="nom" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Téléphone</ion-label>
-      <ion-input type='email' placeholder="0619617459" formControlName="tel" ></ion-input>
-    </ion-item>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-lg="5" size-md="6" size-sm="12" size="12">
+        <ion-item class="input">
+          <ion-label>Prenom</ion-label>
+          <ion-input type='email' placeholder="John" formControlName="prenom" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-label>Mot de passe</ion-label>
-      <ion-input type='password' placeholder="" formControlName="password" ></ion-input>
-    </ion-item>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-lg="5" size-md="6" size-sm="12" size="12">
+        <ion-item class="input">
+          <ion-label>Téléphone</ion-label>
+          <ion-input type='email' placeholder="0619617459" formControlName="tel" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-    <ion-button expand="block" type="submit" [disabled]="!registerForm.valid" color="primary" class='ion-padding-horizontal ion-margin-vertical'>
-      <ion-icon name="checkmark" slot='end'></ion-icon>
-      S'inscrire
-    </ion-button>
-  </form>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-lg="5" size-md="6" size-sm="12" size="12">
+        <ion-item class="input">
+          <ion-label>Mot de passe</ion-label>
+          <ion-input type='password' placeholder="" formControlName="password" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-lg="5" size-md="6" size-sm="12" size="12">
+        <ion-button expand="block" type="submit" [disabled]="!registerForm.valid" color="primary" class='ion-padding-horizontal ion-margin-vertical'>
+          <ion-icon name="checkmark" slot='end'></ion-icon>
+          S'inscrire
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    
+    </form>
+  </ion-grid>
 </ion-content>
+
+<ion-footer transparent class="ion-no-border">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-lg="1.5" size-md="2" size-sm="3">
+        <ion-img src="../../assets/logo-liberte-egalite-fraternite 1(1).png"></ion-img>
+      </ion-col>
+      
+      <ion-col >
+        <p style="color:white;">Créé par le ministère des solidarités et de la santé</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

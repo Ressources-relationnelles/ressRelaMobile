@@ -36,6 +36,19 @@ const routes: Routes = [
       role: 'ADMIN'
     }
   },
+  {
+    path: 'admin-users',
+    loadChildren: () => import('./pages/admin-users/admin-users.module').then( m => m.AdminUsersPageModule),
+    canActivate: [AuthGuard],
+    data : {
+      role: 'ADMIN'
+    }
+  },  {
+    path: 'user',
+    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
+  }
+
+
 ];
 
 @NgModule({

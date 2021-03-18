@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
-import { map, take } from 'rxjs/operators';
+import { map, take, takeUntil } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -12,9 +12,16 @@ import { Subject } from 'rxjs';
 })
 export class RessourceService {
 
-  constructor(private db : AngularFirestore, private auth : AuthService)
-  {
+  private ngUnsubscribe: Subject<any> = new Subject();
 
+  constructor(private db : AngularFirestore, private auth : AuthService, private afAuth : AngularFireAuth)
+  {
+    this.afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+      }
+    })
   }
 
   createOrUpdateRessource(id = null, info) :Promise<any> {
@@ -36,7 +43,21 @@ export class RessourceService {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
         return { id,...(data as {}) };
-      }))
+      })),
+      takeUntil(this.ngUnsubscribe)
+    )
+  }
+  /**
+   * Récupérer les ressources validées et publiées
+   */
+  getRessourcesActive()  {
+    return this.db.collection('ressources', ref => ref.where('status', '==', "1")).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id,...(data as {}) };
+      })),
+      takeUntil(this.ngUnsubscribe)
     )
   }
 
@@ -46,7 +67,8 @@ export class RessourceService {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
         return { id, ...(data as {}) };
-      }))
+      })),
+      takeUntil(this.ngUnsubscribe)
     );
   }
 
