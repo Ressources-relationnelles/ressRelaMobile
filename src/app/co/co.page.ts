@@ -6,7 +6,6 @@ import { AuthService } from '../services/auth.service';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-
 @Component({
     selector: 'app-co',
     templateUrl: './co.page.html',

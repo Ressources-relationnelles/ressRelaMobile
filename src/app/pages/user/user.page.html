@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+    <ion-card-header>
+      <ion-card-title *ngIf="!id">Création d'un utilisateur</ion-card-title>
+      <ion-card-title *ngIf="id">Utilisateur : #{{ id }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <form [formGroup]="userForm" (ngSubmit)="saveOrUpdate()">
+
+        <ion-item *ngIf='id'>
+          <ion-label>Utilisateur</ion-label>
+          <ion-input type="text" [(ngModel)]="user"
+          [ngModelOptions]="{ standalone: true}" disabled="true">
+          </ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Nom <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="nom" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Prenom <ion-text color="danger">*</ion-text></ion-label>
+          <ion-textarea required formControlName="prenom" type="text"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Email <ion-text color="danger">*</ion-text></ion-label>
+          <ion-textarea required formControlName="email" type="text"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Role <ion-text color="danger">*</ion-text></ion-label>
+          <ion-textarea required formControlName="role" type="text"></ion-textarea>
+        </ion-item>
+
+        <ion-item *appHasPermission="['change-ressource-status']">
+          <!-- <ion-label>Status</ion-label>
+            <ion-segment formControlName="status" mode="ios">
+              <ion-segment-button value="0" layout="icon-start">
+                <ion-label>En attente</ion-label>
+                <ion-icon name="radio-button-off"></ion-icon>
+              </ion-segment-button>
+               <ion-segment-button value="1" layout="icon-end">
+                <ion-icon name="checkmark-circle"></ion-icon>
+                <ion-label>Publié</ion-label>
+              </ion-segment-button>
+            </ion-segment> -->
+        </ion-item>
+
+        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color="primary" type="submit" [disabled]="!userForm.valid">
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+          <p *ngIf="!id">Créer</p>
+          <p *ngIf="id">Modifier</p>
+        </ion-button>
+
+        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color='danger' (click)="deleteRessource()" *appHasPermission="['delete-ressource']">
+          <ion-icon name="trash" slot="end"></ion-icon>
+        </ion-button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
