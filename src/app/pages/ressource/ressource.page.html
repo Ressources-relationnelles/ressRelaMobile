@@ -48,7 +48,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">Categorie <ion-text color="danger">*</ion-text></ion-label>
-          <ion-select>
+          <ion-select formControlName="categorie">
             <ion-select-option formControlName="categorie" type="text">Communication</ion-select-option>
             <ion-select-option>Culture</ion-select-option>
             <ion-select-option>Développement personnel</ion-select-option>
@@ -85,9 +85,12 @@
           <p *ngIf="id">Modifier</p>
         </ion-button>
 
-        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color='danger' (click)="deleteRessource()" *appHasPermission="['delete-ressource']">
+        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color="danger"
+          (click)="deleteRessource()"
+          *appHasPermission="['delete-ressource']">
           <ion-icon name="trash" slot="end"></ion-icon>
         </ion-button>
+
       </form>
 
     </ion-card-content>

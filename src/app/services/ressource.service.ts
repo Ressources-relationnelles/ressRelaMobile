@@ -56,8 +56,7 @@ export class RessourceService {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
         return { id,...(data as {}) };
-      })),
-      takeUntil(this.ngUnsubscribe)
+      }))
     )
   }
 

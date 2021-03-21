@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { AuthGuard } from './guards/auth.guard';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -43,17 +46,32 @@ const routes: Routes = [
     data : {
       role: 'ADMIN'
     }
-  },  {
-    path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
-  }
-
+  },
+  {
+    path: 'admin-categories',
+    loadChildren: () => import('./pages/admin-categories/admin-categories.module').then( m => m.AdminCategoriesPageModule),
+    canActivate: [AuthGuard],
+    data : {
+      role: 'ADMIN'
+    }
+  },
 
 ];
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [RouterModule]
 })

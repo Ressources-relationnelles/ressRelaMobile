@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <img class="displayed"  height="75 px" width="75 px" src="../../assets/icon/77191645.png" routerLink="/co">
+    <img class="displayed"  height="50 px" width="50px" src="../../assets/icon/77191645.png" routerLink="/co">
     <ion-buttons slot="secondary">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
@@ -8,18 +8,12 @@
 </ion-header>
 
 <ion-content>
-  <img src="../../assets/icon/BF37XK5RQPUX73IZL4V3RET4WM.webp">
- <div class="move">
-  <div class="box">
-    <img src="../../assets/icon/cliche-frances.jpg">
-   </div>
- </div>
 
  <!-- <img src="../../assets/icon/pasta.jpeg">  -->
 
 <!-- Test affichage boucle sur les ressources en base de données-->
-<ion-list >
-  <ion-item *ngFor="let ressource of ressources | async">
+<!-- <ion-list >
+  <ion-item *ngFor="let ressource of ressources | async" (click)="openRessourceModal(ressource.id)">
     <ion-icon name="radio-button-off" color="dark" *ngIf="ressource.status == 0" slot="start" ></ion-icon>
     <ion-icon name="checkmark-circle" color="success" *ngIf="ressource.status == 1" slot="start" ></ion-icon>
 
@@ -47,16 +41,121 @@
     </ion-note>
   </ion-item>
 </ion-list>
-</ion-content>
+</ion-content> -->
 
 
 <!-- Boutton ajouter ressources -->
-<ion-fab  class="ion-margin-bottom ion-margin-end ion-padding-bottom" vertical="bottom" horizontal="end" slot="fixed">
+ <ion-fab  class="ion-margin-bottom ion-margin-end ion-padding-bottom" vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button color="success" (click)="openRessourceModal()">
-  <!-- <ion-fab-button color="success"> -->
+
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
+<!--
+<ion-tab-bar color="light" slot="bottom">
+  <ion-tab-button tab="tab1" routerLink="/home">
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button tab="tab2">
+    <ion-icon name="search"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button tab="tab3" routerLink="/profil">
+    <ion-icon name="person-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-grid>
+  <ion-row class="ion-justify-content-center " >
+      <ion-col class="ion-text-center tes" size-lg="12" size-md="12" size-sm="12" size="12"
+        style="background-color:#26AF97; height:180px ;">
+      </ion-col>
+  </ion-row>
+  <ion-row>
+    <div class="move">
+      <div class="box">
+
+        <ion-col>
+          <img src="../../assets/icon/profilimage2.jpg" style="width: fit-content;">
+        </ion-col>
+
+
+      </div>
+    </div>
+    <ion-col size="4">
+      <h3 style='color:#11998e;'>{{ user.nom }}</h3>
+    </ion-col>
+  </ion-row>
+  <!-- searchbar -->
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-lg="5"size-md="6"size-sm="8" size="12">
+      <ion-searchbar  (ionInput)="onInput($event)"></ion-searchbar>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="color:grey; padding-left:10%;" size-lg="3" size-md="5" size-sm="6" size-="7">
+      <h3 style="color:grey; padding-left:10%;">Mes ressources</h3>
+    </ion-col>
+    <ion-col size-lg="2" size-md="4" size-sm="4" size-="5">
+      <ion-button class="newRess" (click)="openRessourceModal()" color="primary">Créer ressource</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+
+    <ion-col class="card" *ngFor="let ressource of ressources" size-lg="3" size-md="5" size-sm="12" size ="12">
+      <div class="wrapper-card">
+        <h2> {{ ressource.title }} </h2>
+
+        <div class="flex">
+          <div class="wrapper-img img-box">
+            <img src="{{ ressource.imgURL}}">
+          </div>
+        </div>
+
+        <ion-tab-bar>
+          <ion-tab-button tab="tab4">
+            <ion-icon name="add"></ion-icon>
+          </ion-tab-button>
+          <ion-tab-button tab="tab5">
+            <ion-icon name="heart-outline"></ion-icon>
+          </ion-tab-button>
+          <ion-tab-button tab="tab7">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </div>
+    </ion-col>
+  </ion-row>
+
+<ion-row>
+
+</ion-row>
+</ion-grid>
+
+</ion-content>
 
 <ion-tab-bar color="light" slot="bottom">
   <ion-tab-button tab="tab1" routerLink="/home">
@@ -69,3 +168,4 @@
     <ion-icon name="person-circle-outline"></ion-icon>
   </ion-tab-button>
 </ion-tab-bar>
+

@@ -8,20 +8,61 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item button *ngFor="let ressource of ressources | async" (click)="openRessource(ressource.id)">
-      <ion-icon name="radio-button-off" color="dark" *ngIf="ressource.status == 0" slot="start"></ion-icon>
-      <ion-icon name="checkmark-circle" color="success" *ngIf="ressource.status == 1" slot="start"></ion-icon>
+<ion-grid>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-lg="8" size-md="9" size-sm='10' size='12'>
+    <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
+      <ion-list>
+        <ion-item button *ngFor="let ressource of ressources" (click)="openRessource(ressource.id)">
+          <ion-icon name="radio-button-off" color="dark" *ngIf="ressource.status == 0" slot="start"></ion-icon>
+          <ion-icon name="checkmark-circle" color="success" *ngIf="ressource.status == 1" slot="start"></ion-icon>
+          <ion-label>
+            <h2>{{ ressource.title }}</h2>
+            <p>{{ ressource.desc }}</p>
+          </ion-label>
+          <ion-note color="light" slot="end">{{ ressource.created_at?.seconds*1000 | date: 'MMM d' }}</ion-note>
 
-      <ion-label>
-        <h2>{{ ressource.title }}</h2>
-        <p>{{ ressource.desc }}</p>
-      </ion-label>
-      <ion-note color="light" slot="end">{{ ressource.created_at?.seconds*1000 | date: 'MMM d' }}</ion-note>
-
-    </ion-item>
-  </ion-list>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
   <!-- </ion-menu> -->
+
+<!-- Desktop -->
+  <ion-grid class="ion-margin tableDesk">
+    <ion-row class='ion-justify-content-center'>
+      <ion-col size-lg="10" size-md="12" size-sm="12" size="12">
+        <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
+        <ion-row class='first-row '>
+          <ion-col size="1">N</ion-col>
+          <ion-col size="2">Nom</ion-col>
+          <ion-col size="2">Prenom</ion-col>
+          <ion-col size="3">email</ion-col>
+          <ion-col size="2">Role</ion-col>
+          <ion-col size="2">Editer</ion-col>
+        </ion-row>
+        <ion-row  button *ngFor="let ressource of ressources ; index as i">
+          <ion-col size="1">{{ i + 1 }}</ion-col>
+          <ion-col size="2">{{ ressource.title }}</ion-col>
+          <ion-col size="2">{{ ressource.desc }}</ion-col>
+          <ion-col *ngIf="ressource.status === '0' " size="3">En attente</ion-col>
+          <ion-col *ngIf="ressource.status === '1' " size="3">Publié</ion-col>
+          <ion-col size="2">{{ ressource.role }}</ion-col>
+          <ion-col size="2"><ion-button (click)="openRessource(ressource.id)"><ion-icon name="brush"></ion-icon></ion-button></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="openRessource()" color="primary" >
+          Créer une ressource
+        </ion-button>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+
 
 </ion-content>
 

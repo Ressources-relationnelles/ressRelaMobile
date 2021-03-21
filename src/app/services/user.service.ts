@@ -13,6 +13,9 @@ import * as firebase from 'firebase/app';
 export class UserService {
   private ngUnsubscribe: Subject<any> = new Subject();
 
+  public searchTerm : string ="";
+
+
   constructor(private db : AngularFirestore, private auth : AuthService, private afAuth : AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
       if (!user) {
@@ -51,6 +54,8 @@ export class UserService {
     }
   }
   deleteUser(id) {
-    return this.db.doc(`ressources/${id}`).delete();
+    return this.db.doc(`users/${id}`).delete();
   }
+
+
 }

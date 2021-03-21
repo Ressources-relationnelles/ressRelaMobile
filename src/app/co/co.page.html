@@ -2,6 +2,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
+    <!-- lg = 992px   md = 768px   sm = 545px -->
       <ion-col class="ion-text-center" size-lg="6" size-md="6" size-sm="12" size="12">
         <div class="header">
           <h1 style="color:white;">(Re)Sources relationnelles</h1>
@@ -43,6 +44,7 @@
 
                 <ion-button [disabled]="!loginForm.valid" color="success" shape="round" type="submit" (click)="login()" expand="block">Connexion</ion-button>
                 <ion-button shape="round" routerLink='/register' color="tertiary" expand="block">Inscription</ion-button>
+                <ion-button class="center" shape="round" routerLink='/home' color="tertiary" >Continuer sans compte</ion-button>
               </form>
             </div>
       </ion-col>
@@ -60,7 +62,7 @@
       <ion-col size-lg="1.5" size-md="2" size-sm="3">
         <ion-img src="../../assets/logo-liberte-egalite-fraternite 1(1).png"></ion-img>
       </ion-col>
-      
+
       <ion-col >
         <p style="color:white;">Créé par le ministère des solidarités et de la santé</p>
       </ion-col>

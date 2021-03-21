@@ -49,12 +49,12 @@ export class RessourcePage implements OnInit {
         nbike: ressource['nblike']
       });
 
-      this.ressourceForm.controls['title'].disable();
-      this.ressourceForm.controls['desc'].disable();
-      this.ressourceForm.controls['categorie'].disable();
-      this.ressourceForm.controls['lien'].disable();
-      this.ressourceForm.controls['imgURL'].disable();
-      this.ressourceForm.controls['nblike'].disable();
+      // this.ressourceForm.controls['title'].disable();
+      // this.ressourceForm.controls['desc'].disable();
+      // this.ressourceForm.controls['categorie'].disable();
+      // this.ressourceForm.controls['lien'].disable();
+      // this.ressourceForm.controls['imgURL'].disable();
+      // this.ressourceForm.controls['nblike'].disable();
       // this.ressourceForm.controls['status'].disable();
 
       this.ressourceService.getUser(ressource['creator']).subscribe(user => {

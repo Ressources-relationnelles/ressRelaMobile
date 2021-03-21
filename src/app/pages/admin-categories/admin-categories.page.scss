@@ -1,0 +1,38 @@
+ion-grid {
+  --ion-grid-column-padding: 10px;
+  border-collapse: collapse;
+  border-style: hidden;
+
+  .first-row{
+    // background-color:  #7dd32d;
+    color:white;
+    // font-weight: bold;
+    font-size:1.2rem;
+    background-color: #3880ff;
+  }
+  ion-col {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-bottom: 0;
+    border-right: 0;
+  }
+  // ion-col:last-child {
+  //   border-right: 1px solid black;
+  // }
+
+  // ion-row:last-child {
+  //   border-bottom: 1px solid black;
+  // }
+
+}
+@media screen and (max-width:768px) {
+  .tableDesk {
+    display:none !important;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .listM {
+    display:none !important;
+  }
+}

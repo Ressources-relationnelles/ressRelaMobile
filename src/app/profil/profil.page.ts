@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
@@ -14,19 +15,36 @@ import { RessourceService } from '../services/ressource.service';
   styleUrls: ['./profil.page.scss'],
 })
 export class ProfilPage implements OnInit {
-  user;
+  user :Observable<any>;
   heart:any;
-  ressources : Observable<any>;
-  constructor(private auth : AuthService, private modalCtrl : ModalController, private ressourceService : RessourceService, private db : AngularFirestore) { }
+  // ressources : Observable<any>;
+
+  ressources :Array<any>
+  allRessources : Array<any>
+  constructor(private auth : AuthService, private modalCtrl : ModalController, private ressourceService : RessourceService, private db : AngularFirestore, public afAuth : AngularFireAuth)
+  {
+    this.ressourceService.getRessourceByUser().subscribe(res => {
+      this.allRessources = res;
+      this.ressources = res;
+    })
+  }
 
   ngOnInit() {
-    this.ressources = this.ressourceService.getRessourceByUser();
+    // this.ressources = this.ressourceService.getRessourceByUser();
+    this.auth.currentUser.subscribe(data => {
+      this.user = data;
+      console.log(this.user, data);
+
+    })
     // console.log('ressources : ', this.ressourceService.getRessourceByUser());
   }
 
-  async openRessourceModal() {
+  async openRessourceModal(id) {
     const modal = await this.modalCtrl.create({
-      component: RessourcePage
+      component: RessourcePage,
+      componentProps: {
+        id
+      }
     });
     await modal.present();
   }
@@ -38,7 +56,21 @@ export class ProfilPage implements OnInit {
   getUser(ide) {
     console.log("bonjour");
 
-    this.user = this.db.doc(`users/${ide}`);
+    // this.user = this.db.doc(`users/${ide}`);
   }
 
+  onInput(e) {
+    var value = e.srcElement.value;
+    // console.log(value);
+
+    if (!value || value =='') {
+      this.ressources = this.allRessources;
+    }
+
+    value = value.toLowerCase();
+
+    this.ressources = this.allRessources.filter( ressource =>
+      ressource.title.toLowerCase().indexOf(value) > -1 ||
+      ressource.desc.toLowerCase().indexOf(value) > -1)
+  }
 };

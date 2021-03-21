@@ -121,7 +121,7 @@ export class CoPage implements OnInit {
       async err => {
         let alert = await this.alertCtrl.create({
           header: 'Error',
-          message: err.message,
+          message: "Oups ! Une erreur est survenue ! Détail : " + err.message,
           buttons: ['OK']
         });
         alert.present();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ModalController, NavParams } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -30,9 +31,11 @@ export class UserPage implements OnInit {
     });
     this.id = this.navParam.get('id');
 
+
     if (this.id) {
       this.userService.getUser(this.id).subscribe( user => {
-        console.log(user);
+        console.log("user", this.userForm);
+
         this.userForm.patchValue({
           nom: user['nom'],
           prenom: user['prenom'],

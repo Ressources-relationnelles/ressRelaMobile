@@ -1,8 +1,8 @@
 <ion-app>
-
+  <div *ngIf="!isAdmin">
   <ion-menu menuId="main-menu" content-id="main" type="overlay">
 
-    <ion-header>
+    <ion-header class="menuU">
       <ion-toolbar>
         <ion-title slot="start">Menu</ion-title>
         <ion-menu-toggle slot="end">
@@ -100,15 +100,51 @@
           <ion-icon name="log-out-outline" slot="start"></ion-icon>
           <ion-label >Déconnexion</ion-label>
         </ion-item>
-        <ion-item routerLink="/admin-users">
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+  </div>
+
+  <div *ngIf="isAdmin">
+    <ion-menu menuId="main-menu" content-id="main" type="overlay">
+    <ion-header class="menuA">
+      <ion-toolbar>
+        <ion-title slot="start">Menu Admin</ion-title>
+        <ion-menu-toggle slot="end">
+          <ion-item > <ion-icon name="close" slot="end"></ion-icon> </ion-item>
+        </ion-menu-toggle>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list id="sidenav">
+        <ion-item>
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-label>Paramètres</ion-label>
+        </ion-item>
+        <ion-item (click)="signOut()">
           <ion-icon name="log-out-outline" slot="start"></ion-icon>
-          <ion-label >Utilisateur</ion-label>
+          <ion-label >Déconnexion</ion-label>
+        </ion-item>
+        <ion-item routerLink="/admin-users">
+          <ion-icon name="people" slot="start"></ion-icon>
+          <ion-label >Utilisateurs</ion-label>
+        </ion-item>
+        <ion-item routerLink="/admin">
+          <ion-icon name="hammer" slot="start"></ion-icon>
+          <ion-label >Gestion Ressources</ion-label>
+        </ion-item>
+         <ion-item routerLink="/admin-categories">
+          <ion-icon name="apps" slot="start"></ion-icon>
+          <ion-label >Gestion Catégorie</ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
 
   </ion-menu>
 
+  </div>
   <ion-router-outlet id="main"></ion-router-outlet>
 
 </ion-app>

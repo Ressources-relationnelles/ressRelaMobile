@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -63,7 +68,7 @@
           <p *ngIf="id">Modifier</p>
         </ion-button>
 
-        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color='danger' (click)="deleteRessource()" *appHasPermission="['delete-ressource']">
+        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color='danger' (click)="deleteUser()" *appHasPermission="['delete-ressource']">
           <ion-icon name="trash" slot="end"></ion-icon>
         </ion-button>
       </form>

@@ -9,19 +9,33 @@
 
 <ion-content>
 
-<ion-grid>
+<ion-grid >
   <h2 class="ion-text-center">Liste des utilisateurs</h2>
-  <ion-row class="ion-justify-content-center">
-    <ion-col size-lg="6" size-md="6" size-sm="8" size="12">
-      <ion-searchbar></ion-searchbar>
+  <ion-row class="ion-justify-content-center listM">
+    <ion-col size-lg="10" size="12">
+      <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
+
+      <!-- <ion-list>
+        <ion-item
+          *ngFor="let user of users"
+
+        >
+          <ion-label class="ion-text-wrap">
+            <h2>
+              {{ user.nom }}
+            </h2>
+          </ion-label>
+        </ion-item>
+      </ion-list> -->
+
       <ion-list>
-        <ion-item button *ngFor="let user of users | async" (click)="openUserModal(user.id)" >
+        <ion-item button *ngFor="let user of users" (click)="openUserModal(user.id)" >
 
           <ion-label>
             <h2>{{ user.nom }}</h2>
-            <p>{{ user.prnom }}</p>
+            <p>{{ user.prenom }}</p>
           </ion-label>
-          <ion-note color="light" slot="end">{{ user.created?.seconds*1000 | date: 'MMM d' }}</ion-note>
+          <ion-note color="dark" slot="end">{{ user.created?.seconds*1000 | date: 'MMM d' }}</ion-note>
         </ion-item>
       </ion-list>
 
@@ -29,35 +43,48 @@
   </ion-row>
 </ion-grid>
 
-  <ion-grid class="ion-margin">
+
+
+
+
+  <ion-grid class="ion-margin tableDesk">
     <ion-row class='ion-justify-content-center'>
-      <ion-col size-lg="6" size-md="7" size-sm="10" size="12">
-      <ion-searchbar></ion-searchbar>
-        <ion-row class='first-row ion-justify-content-center'>
-          <ion-col >N</ion-col>
-          <ion-col>Nom</ion-col>
-          <ion-col>Prenom</ion-col>
-          <ion-col>email</ion-col>
-          <ion-col>Role</ion-col>
-          <ion-col>Editer</ion-col>
+      <ion-col size-lg="10" size-md="12" size-sm="12" size="12">
+        <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
+        <ion-row class='first-row '>
+          <ion-col size="1">N</ion-col>
+          <ion-col size="2">Nom</ion-col>
+          <ion-col size="2">Prenom</ion-col>
+          <ion-col size="3">email</ion-col>
+          <ion-col size="2">Role</ion-col>
+          <ion-col size="2">Editer</ion-col>
         </ion-row>
-        <ion-row  button *ngFor="let user of users | async ; index as i">
-          <ion-col>{{ i + 1 }}</ion-col>
-          <ion-col>{{ user.nom }}</ion-col>
-          <ion-col>{{ user.prenom }}</ion-col>
-          <ion-col>{{ user.email }}</ion-col>
-          <ion-col>{{ user.role }}</ion-col>
-          <ion-col><ion-button (click)="openUserModal(user.id)"><ion-icon name="brush"></ion-icon></ion-button></ion-col>
+        <ion-row  button *ngFor="let user of users ; index as i">
+          <ion-col size="1">{{ i + 1 }}</ion-col>
+          <ion-col size="2">{{ user.nom }}</ion-col>
+          <ion-col size="2">{{ user.prenom }}</ion-col>
+          <ion-col size="3">{{ user.email }}</ion-col>
+          <ion-col size="2">{{ user.role }}</ion-col>
+          <ion-col size="2"><ion-button (click)="openUserModal(user.id)"><ion-icon name="brush"></ion-icon></ion-button></ion-col>
         </ion-row>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="openUserModal()" color="primary" >
+          Créer utilisateur
+        </ion-button>
+      </ion-col>
+    </ion-row>
+</ion-grid>
 
-  </ion-grid>
 
-  <ion-item lines="none">
-    <ion-button (click)="createUser()"color="primary" size="small" slot="primary">
-      Créer utilisateur
-    </ion-button>
-  </ion-item>
+
+
+
+
+
+  <!-- </ion-grid> -->
+
 
 </ion-content>
