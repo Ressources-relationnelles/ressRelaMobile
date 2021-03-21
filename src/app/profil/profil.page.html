@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <img class="displayed"  height="75 px" width="75 px" src="../../assets/icon/77191645.png" routerLink="/co">
+    <img class="displayed" height="75 px" width="75 px" src="../../assets/icon/77191645.png" routerLink="/co">
     <ion-buttons slot="secondary">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
@@ -8,52 +8,67 @@
 </ion-header>
 
 <ion-content>
-  <img src="../../assets/icon/BF37XK5RQPUX73IZL4V3RET4WM.webp">
- <div class="move">
-  <div class="box">
-    <img src="../../assets/icon/cliche-frances.jpg">
-   </div>
- </div>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-text-center" size-lg="12" size-md="12" size-sm="12" size="12"
+        style="background-color:#26AF97; height:300px ;">
+      </ion-col>
+    </ion-row>
+    <div class="move">
+      <div class="box">
+        <ion-col>
+          <img src="../../assets/icon/profilimage2.jpg" style="width: fit-content;">
+        </ion-col>
+      </div>
+    </div>
 
- <!-- <img src="../../assets/icon/pasta.jpeg">  -->
+    <!-- <img src="../../assets/icon/pasta.jpeg">  -->
 
-<!-- Test affichage boucle sur les ressources en base de données-->
-<ion-list >
-  <ion-item *ngFor="let ressource of ressources | async">
-    <ion-icon name="radio-button-off" color="dark" *ngIf="ressource.status == 0" slot="start" ></ion-icon>
-    <ion-icon name="checkmark-circle" color="success" *ngIf="ressource.status == 1" slot="start" ></ion-icon>
+    <!-- Test affichage boucle sur les ressources en base de données-->
+    <ion-list>
+      <ion-item *ngFor="let ressource of ressources | async">
+        <ion-icon name="radio-button-off" color="dark" *ngIf="ressource.status == 0" slot="start"></ion-icon>
+        <ion-icon name="checkmark-circle" color="success" *ngIf="ressource.status == 1" slot="start"></ion-icon>
 
-    <ion-label>
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <ion-img [src]="ressource.imgUrl"></ion-img>
-        </ion-thumbnail>
+        <ion-label>
+          <ion-row>
+            <ion-item>
+              <ion-col size-lg="6" size-md="6" size-sm="12" size="12">
+                <ion-img src="{{ressource.imgURL}}" class="imagedisplay"></ion-img><br>
+              </ion-col>
+
+              <ion-col size-lg="6" size-md="6" size-sm="12" size="12">
+                <p>{{ ressource.title }}</p>
+                <p>{{ ressource.desc }}</p>
+                <p>{{ ressource.categorie }}</p>
+              </ion-col>
+
+              <a ng-href="" attr.data-target="{{ressource.lien}}"
+                onclick="window.open('ressource.lien','_system','location=yes')">{{ressource.lien}}</a>
+            </ion-item>
+          </ion-row>
+
+          <ion-item>
+            <ion-row>
+              <ion-badge color="danger">{{ ressource.nblike }}</ion-badge>
+              <ion-icon onclick="removelike(heart)" name="heart"></ion-icon>
+              <ion-icon onclick="addlike(heart)" color="danger" name="heart"></ion-icon>
+            </ion-row>
+          </ion-item>
+        </ion-label>
+        <ion-note>
+          {{ ressource.created_at?.seconds*1000 | date: 'MMM d' }}
+        </ion-note>
       </ion-item>
-      <h2>{{ ressource.title }}</h2>
-      <p>{{ ressource.desc }}</p>
-      <p>{{ ressource.categorie }}</p>
-      <p> </p>
-      <a ng-href=""
-      attr.data-target="{{ressource.lien}}"
-      onclick="window.open('ressource.lien','_system','location=yes')">{{ressource.lien}}</a>
-    <ion-item>
-      <ion-badge color="danger">{{ ressource.nblike }}</ion-badge>
-      <ion-icon  onclick="removelike(heart)" name="heart"></ion-icon>
-      <ion-icon  onclick="addlike(heart)" color="danger" name="heart"></ion-icon>
-    </ion-item>
-    </ion-label>
-    <ion-note>
-      {{ ressource.created_at?.seconds*1000 | date: 'MMM d' }}
-    </ion-note>
-  </ion-item>
-</ion-list>
+    </ion-list>
+  </ion-grid>
 </ion-content>
 
 
 <!-- Boutton ajouter ressources -->
-<ion-fab  class="ion-margin-bottom ion-margin-end ion-padding-bottom" vertical="bottom" horizontal="end" slot="fixed">
+<ion-fab class="ion-margin-bottom ion-margin-end ion-padding-bottom" vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button color="success" (click)="openRessourceModal()">
-  <!-- <ion-fab-button color="success"> -->
+    <!-- <ion-fab-button color="success"> -->
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

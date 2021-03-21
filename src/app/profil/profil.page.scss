@@ -19,6 +19,57 @@ ion-header{
   margin-top: -50px;
 }
 
+.imagedisplay{
+  width: fit-content;
+  min-width: 150px;
+  width: 150px;
+}
+//<ion-thumbnail item-left="" style="background-image: url(...);background-size: 100%;"></ion-thumbnail>
+
+.backgroundImage{
+  width: fit-content;
+  background-position: center;
+  height: size;
+  width: 100%;
+  z-index: -5;
+}
+.RessTitle{
+  margin-left: 50 px !important;
+}
+.RessDesc{
+  margin-left: 10 px !important;
+}
+.RessCateg{
+  margin-left: 10 px !important;
+}
+
+//md
+@media screen and (min-width: 768px) {
+  .imagedisplay{
+    width: fit-content;
+    min-width: 150px;
+    height: 150px;
+    width: 150px;
+  }
+}
+//lg
+@media screen and (min-width: 992px) {
+  .imagedisplay{
+    width: fit-content;
+    min-width: 300px;
+    height: 300px;
+    width: 300px;
+  }
+}
+//sm
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .imagedisplay{
+    width: fit-content;
+    min-width: 150px;
+    height: 150px;
+    width: 150px;
+  }
+}
 ion-fab {
   margin: 0 35px 100px 0;
   ion-fab-button {
