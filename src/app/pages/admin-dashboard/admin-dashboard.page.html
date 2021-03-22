@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-<ion-grid>
+<ion-grid class="listM">
   <ion-row class="ion-justify-content-center">
     <ion-col size-lg="8" size-md="9" size-sm='10' size='12'>
     <ion-searchbar (ionInput)="onInput($event)"></ion-searchbar>
@@ -38,17 +38,15 @@
           <ion-col size="1">N</ion-col>
           <ion-col size="2">Nom</ion-col>
           <ion-col size="2">Prenom</ion-col>
-          <ion-col size="3">email</ion-col>
-          <ion-col size="2">Role</ion-col>
+          <ion-col size="2">Status</ion-col>
           <ion-col size="2">Editer</ion-col>
         </ion-row>
         <ion-row  button *ngFor="let ressource of ressources ; index as i">
           <ion-col size="1">{{ i + 1 }}</ion-col>
           <ion-col size="2">{{ ressource.title }}</ion-col>
           <ion-col size="2">{{ ressource.desc }}</ion-col>
-          <ion-col *ngIf="ressource.status === '0' " size="3">En attente</ion-col>
-          <ion-col *ngIf="ressource.status === '1' " size="3">Publié</ion-col>
-          <ion-col size="2">{{ ressource.role }}</ion-col>
+          <ion-col style="color:grey" *ngIf="ressource.status === '0' " size="2">En attente</ion-col>
+          <ion-col  style="color:green"*ngIf="ressource.status === '1' " size="2">Publié</ion-col>
           <ion-col size="2"><ion-button (click)="openRessource(ressource.id)"><ion-icon name="brush"></ion-icon></ion-button></ion-col>
         </ion-row>
       </ion-col>

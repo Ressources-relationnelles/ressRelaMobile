@@ -71,6 +71,8 @@ export class ProfilPage implements OnInit {
 
     this.ressources = this.allRessources.filter( ressource =>
       ressource.title.toLowerCase().indexOf(value) > -1 ||
-      ressource.desc.toLowerCase().indexOf(value) > -1)
+      ressource.desc.toLowerCase().indexOf(value) > -1
+
+      )
   }
 };

@@ -128,7 +128,9 @@
     <ion-col class="card" *ngFor="let ressource of ressources" size-lg="3" size-md="5" size-sm="12" size ="12">
       <div class="wrapper-card">
         <h2> {{ ressource.title }} </h2>
-
+        <p style="color:#11998e;">{{ ressource.categorie }} / {{ ressource.typerelation }} </p>
+        <p style="color:grey" *ngIf="ressource.status === '0' " size="2">En attente</p>
+        <p style="color:green"*ngIf="ressource.status === '1' " size="2">Publié</p>
         <div class="flex">
           <div class="wrapper-img img-box">
             <img src="{{ ressource.imgURL}}">

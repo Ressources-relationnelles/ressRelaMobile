@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>typerelation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+    <ion-card-header>
+      <ion-card-title *ngIf="!id">Création d'un type de relation</ion-card-title>
+      <ion-card-title *ngIf="id">Type relation : #{{ id }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <form [formGroup]="typeForm" (ngSubmit)="saveOrUpdate()">
+<!--
+        <ion-item *ngIf='id'>
+          <ion-label>Utilisateur</ion-label>
+          <ion-input type="text" [(ngModel)]="user"
+          [ngModelOptions]="{ standalone: true}" disabled="true">
+          </ion-input>
+        </ion-item> -->
+
+
+        <ion-item>
+          <ion-label position="floating">Nom <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="nom" type="text"></ion-input>
+        </ion-item>
+
+        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color="primary" type="submit" [disabled]="!typeForm.valid">
+          <ion-icon name="checkmark" slot="end"></ion-icon>
+          <p *ngIf="!id">Créer</p>
+          <p *ngIf="id">Modifier</p>
+        </ion-button>
+
+        <ion-button class='ion-margin-vertical ion-margin-horizontal' expand="block" color='danger' (click)="deleteTypeRelation()" *appHasPermission="['delete-type-relation']">
+          <ion-icon name="trash" slot="end"></ion-icon>
+        </ion-button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

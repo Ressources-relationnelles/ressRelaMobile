@@ -55,6 +55,15 @@ const routes: Routes = [
       role: 'ADMIN'
     }
   },
+  {
+    path: 'admin-typerelation',
+    loadChildren: () => import('./pages/admin-typerelation/admin-typerelation.module').then( m => m.AdminTyperelationPageModule),
+    canActivate: [AuthGuard],
+    data : {
+      role: 'ADMIN'
+    }
+  },
+
 
 ];
 

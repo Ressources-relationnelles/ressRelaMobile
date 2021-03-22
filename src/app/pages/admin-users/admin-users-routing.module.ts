@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: AdminUsersPage
+  },  {
+    path: 'test',
+    loadChildren: () => import('./test/test.module').then( m => m.TestPageModule)
   }
+
+
 ];
 
 @NgModule({

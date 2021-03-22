@@ -14,7 +14,7 @@ export class RessourcePage implements OnInit {
   ressourceForm : FormGroup;
   id = null;
   user = "";
-
+  
   constructor(
     private fb : FormBuilder,
     private modalCtrl : ModalController,
@@ -65,7 +65,7 @@ export class RessourcePage implements OnInit {
 
   }
 
-  close() {
+  close() :void {
     this.modalCtrl.dismiss();
   }
 
@@ -82,8 +82,12 @@ export class RessourcePage implements OnInit {
       loading.dismiss();
     })
   }
-
-  deleteRessource() {
+  /**
+   * Commentaire
+   * delete la ressource
+   * commentaire utile
+   */
+  deleteRessource() :void {
     this.ressourceService.deleteRessource(this.id).then( () => {
       this.modalCtrl.dismiss();
     })

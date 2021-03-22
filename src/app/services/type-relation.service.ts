@@ -24,8 +24,8 @@ export class TypeRelationService {
     })
   }
 
-  getCategories() {
-    return this.db.collection('categories').snapshotChanges().pipe(
+  getTypeRelation() {
+    return this.db.collection('typerelations').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
@@ -35,24 +35,24 @@ export class TypeRelationService {
       );
     }
 
-  getCategory(id) {
-    return this.db.doc(`categories/${id}`).valueChanges().pipe(
+  getTypeRelatio(id) {
+    return this.db.doc(`typerelations/${id}`).valueChanges().pipe(
       take(1)
       );
   }
 
-  createOrUpdateCategory(id=null, info: any) :Promise<any> {
+  createOrUpdateTypeRelation(id=null, info: any) :Promise<any> {
     if (id) {
-      return this.db.doc(`categories/${id}`).update(info);
+      return this.db.doc(`typerelations/${id}`).update(info);
     } else {
       // info['creator'] = this.auth.currentUser.value.id;
       // info['created'] = firebase.default.firestore.FieldValue.serverTimestamp();
       console.log('save :', info);
 
-      return this.db.collection('categories').add(info);
+      return this.db.collection('typerelations').add(info);
     }
   }
   deleteTypeRelation(id) {
-    return this.db.doc(`type-relation/${id}`).delete();
+    return this.db.doc(`typerelations/${id}`).delete();
   }
 }
