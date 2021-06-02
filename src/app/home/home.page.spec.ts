@@ -8,7 +8,7 @@ describe('HomePage', () => {
 
 
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(1).toBeTruthy(1);
   });
 });
