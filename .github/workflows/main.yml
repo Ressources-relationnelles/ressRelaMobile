@@ -19,9 +19,7 @@ jobs:
       - name: test
         uses: GabrielBB/xvfb-action@v1
         with:
-          run: npm test
-          env:
-            CI: true
+          run: npm CI-test
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
