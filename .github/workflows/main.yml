@@ -21,7 +21,6 @@ jobs:
         uses: GabrielBB/xvfb-action@v1
         with:
           run: npm test
-
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
