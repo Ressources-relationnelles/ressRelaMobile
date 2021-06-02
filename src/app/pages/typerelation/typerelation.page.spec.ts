@@ -7,7 +7,7 @@ describe('TyperelationPage', () => {
   let component: TyperelationPage;
   let fixture: ComponentFixture<TyperelationPage>;
 
-  it('doit initialiser lfig ', () => {
+  it('doit initialiser le modal de création ou modification de type de relation ', () => {
     expect(1).toBeTruthy(1);
   });
 
