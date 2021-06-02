@@ -7,25 +7,31 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build
+  install:
+    name: Install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
         run: npm install
+  test:
+    name: Test
+    uses: GabrielBB/xvfb-action@v1
+      with:
+        run: npm test
+    - name: Archive Production Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: dist
+        path: dist
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
       - name: Build
         run: npm run build
       - name : Test
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: npm test
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: dist
-          path: dist
   deploy:
     name: Deploy
     needs: build

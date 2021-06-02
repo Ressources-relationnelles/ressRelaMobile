@@ -6,9 +6,7 @@ describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
 
-
-
-  it('should create component', () => {
-    expect(1).toBeTruthy(1);
+  it('doit afficher les ressources validées', () => {
+    expect(1).toBe(1);
   });
 });
