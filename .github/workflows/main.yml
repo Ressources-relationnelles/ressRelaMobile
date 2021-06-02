@@ -17,14 +17,17 @@ jobs:
         run: npm install
   test:
     name: Test
-    uses: GabrielBB/xvfb-action@v1
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+      uses: GabrielBB/xvfb-action@v1
       with:
         run: npm test
-    - name: Archive Production Artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: dist
-        path: dist
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
   build:
     name: Build
     runs-on: ubuntu-latest
