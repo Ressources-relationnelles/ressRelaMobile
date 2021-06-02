@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+// import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+// import { IonicModule } from '@ionic/angular';
 
-import { CoPage } from './co.page';
+// import { CoPage } from './co.page';
 
-describe('CoPage', () => {
-  let component: CoPage;
-  let fixture: ComponentFixture<CoPage>;
+// describe('CoPage', () => {
+//   let component: CoPage;
+//   let fixture: ComponentFixture<CoPage>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CoPage ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+//   beforeEach(waitForAsync(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ CoPage ],
+//       imports: [IonicModule.forRoot()]
+//     }).compileComponents();
 
-    fixture = TestBed.createComponent(CoPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+//     fixture = TestBed.createComponent(CoPage);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });

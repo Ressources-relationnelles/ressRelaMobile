@@ -14,7 +14,7 @@ export class RessourcePage implements OnInit {
   ressourceForm : FormGroup;
   id = null;
   user = "";
-  
+
   constructor(
     private fb : FormBuilder,
     private modalCtrl : ModalController,
@@ -68,6 +68,7 @@ export class RessourcePage implements OnInit {
   close() :void {
     this.modalCtrl.dismiss();
   }
+
 
   async saveOrUpdate() {
     let loading = await this.loadingCtrl.create({
