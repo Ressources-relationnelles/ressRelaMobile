@@ -19,7 +19,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: test
+    - name: test
       uses: GabrielBB/xvfb-action@v1
       with:
         run: npm test
